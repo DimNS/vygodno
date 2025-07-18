@@ -1,0 +1,41 @@
+The following components are included in this product:
+
+Font Awesome
+https://github.com/FortAwesome/Font-Awesome
+Copyright (c) 2024 Fonticons, Inc. (https://fontawesome.com)
+See source code for license details.
+
+Bootstrap 5
+https://github.com/twbs/bootstrap
+Copyright (c) 2011-2025 The Bootstrap Authors
+See source code for license details.
+
+svelte-fa
+https://github.com/Cweili/svelte-fa
+Copyright (c) 2022 Cweili
+See source code for license details.
+
+ESLint
+https://github.com/eslint/eslint
+Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
+See source code for license details.
+
+@sveltejs/vite-plugin-svelte
+https://github.com/sveltejs/vite-plugin-svelte
+Copyright (c) 2021 these people (https://github.com/sveltejs/vite-plugin-svelte/graphs/contributors)
+See source code for license details.
+
+globals
+https://github.com/sindresorhus/globals
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com>
+See source code for license details.
+
+Svelte
+https://github.com/sveltejs/svelte
+Copyright (c) 2016-2025 Svelte Contributors (https://github.com/sveltejs/svelte/graphs/contributors)
+See source code for license details.
+
+Vite
+https://github.com/vitejs/vite
+Copyright (c) 2019-present, VoidZero Inc. and Vite contributors
+See source code for license details.

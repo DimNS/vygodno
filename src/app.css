@@ -1,0 +1,45 @@
+@import './assets/segoeui/segoeui.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+:root,
+body {
+    font-family: 'Segoe UI', sans-serif !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.w1 {
+    width: 1px;
+}
+
+.w100px {
+    width: 100px;
+}
+
+.text-success {
+    color: #16ae71;
+}
+
+.text-danger {
+    color: #fb1c3c;
+}
+
+.text-warning {
+    color: #ecbc64;
+}
+
+.text-info {
+    color: #05337b;
+}
+
+.winner {
+    font-weight: bold;
+    color: #16ae71;
+}
+
+.unit-selector {
+    display: inline;
+    width: auto;
+    padding-top: 0.1rem;
+}
