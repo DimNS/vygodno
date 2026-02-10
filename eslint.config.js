@@ -8,4 +8,7 @@ export default [
             globals: globals.browser,
         },
     },
+    {
+        ignores: ['./dist/**'],
+    },
 ];
