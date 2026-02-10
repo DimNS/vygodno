@@ -1,7 +1,7 @@
 <script>
     import './app.css';
     import Fa from 'svelte-fa';
-    import {faTrash, faPlus, faEraser, faPlay} from '@fortawesome/free-solid-svg-icons';
+    import {faTrash, faPlus, faEraser, faPlay, fa1} from '@fortawesome/free-solid-svg-icons';
     import {onMount} from 'svelte';
     import {moneyFormat, cleanNumber} from './service/MoneyHelper';
 
@@ -184,7 +184,8 @@
             </button>
             <button type="button" onclick={handleAddItem} class="btn btn-warning">
                 <Fa icon={faPlus} />
-                Добавить
+                <Fa icon={fa1} />
+                Товар
             </button>
         </div>
     </div>
