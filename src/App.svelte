@@ -46,8 +46,8 @@
      */
 
     let /** @type {Array<CalculatedItem>} */ calculatedItems = $state([
-            {price: '100', amount: '200', total: 0, diff: 0, winner: false},
-            {price: '150', amount: '220', total: 0, diff: 0, winner: false},
+            {price: '', amount: '', total: 0, diff: 0, winner: false},
+            {price: '', amount: '', total: 0, diff: 0, winner: false},
         ]);
 
     onMount(async () => {
@@ -193,7 +193,7 @@
 <footer>
     <div class="container border-warning">
         <div class="row">
-            <div class="col text-md-end">&copy; DimNS v1.0.0</div>
+            <div class="col text-md-end">&copy; DimNS v1.1.0</div>
         </div>
     </div>
 </footer>
