@@ -33,6 +33,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Fix asset paths for GitHub Pages
+        run: |
+          # Replacing `="/assets/` with `="./assets/`
+          sed -i 's|="/assets/|="./assets/|g' dist/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
