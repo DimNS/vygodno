@@ -9,7 +9,9 @@
         "preview": "vite preview",
         "check": "svelte-check --tsconfig ./tsconfig.json",
         "format": "prettier --write .",
-        "lint": "prettier --check . && eslint ."
+        "lint": "prettier --check . && eslint .",
+        "test:unit": "vitest",
+        "test": "bun run test:unit -- --run"
     },
     "devDependencies": {
         "@eslint/compat": "^2.1.0",
@@ -26,7 +28,8 @@
         "svelte-check": "^4.7.6",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.68.0",
-        "vite": "^8.2.2"
+        "vite": "^8.2.2",
+        "vitest": "^4.1.11"
     },
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "~7.1.0",

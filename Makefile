@@ -3,7 +3,7 @@ init: install
 
 # Единая команда для ии-агента
 .PHONY: check
-check: format lint
+check: format lint test
 
 .PHONY: install
 install:
@@ -30,6 +30,10 @@ format:
 lint:
 	@bun run lint
 	@bun run check
+
+.PHONY: test
+test:
+	@bun run test
 
 .PHONY: run
 run:
