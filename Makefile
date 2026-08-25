@@ -1,27 +1,27 @@
 .PHONY: init
 init:
-	@npm install
+	@bun install
 
 .PHONY: update
 update:
-	@npm update
+	@bun update
 
 .PHONY: outdated
 outdated:
-	@npm outdated
+	@bun outdated
 
 .PHONY: audit
 audit:
-	@npm audit
+	@bun audit
 
 .PHONY: lint
 lint:
-	@npx eslint .
+	@bunx eslint .
 
 .PHONY: run
 run:
-	@npm run-script dev
+	@bun run dev
 
 .PHONY: build
 build:
-	@npm run-script build
+	@bun run build
