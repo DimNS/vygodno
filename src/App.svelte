@@ -1,9 +1,9 @@
 <script>
     import './app.css';
     import Fa from 'svelte-fa';
-    import {faTrash, faPlus, faEraser, faPlay, fa1} from '@fortawesome/free-solid-svg-icons';
-    import {onMount} from 'svelte';
-    import {moneyFormat, cleanNumber} from './service/MoneyHelper';
+    import { faTrash, faPlus, faEraser, faPlay, fa1 } from '@fortawesome/free-solid-svg-icons';
+    import { onMount } from 'svelte';
+    import { moneyFormat, cleanNumber } from './service/MoneyHelper';
 
     /**
      * @typedef {Object} Unit
@@ -46,11 +46,11 @@
      */
 
     let /** @type {Array<CalculatedItem>} */ calculatedItems = $state([
-            {price: '', amount: '', total: 0, diff: 0, winner: false},
-            {price: '', amount: '', total: 0, diff: 0, winner: false},
+            { price: '', amount: '', total: 0, diff: 0, winner: false },
+            { price: '', amount: '', total: 0, diff: 0, winner: false },
         ]);
 
-    onMount(async () => {
+    onMount(() => {
         calculate();
     });
 
@@ -78,14 +78,13 @@
 
     function handleClear() {
         calculatedItems = [
-            {price: '', amount: '', total: 0, diff: 0, winner: false},
-            {price: '', amount: '', total: 0, diff: 0, winner: false},
+            { price: '', amount: '', total: 0, diff: 0, winner: false },
+            { price: '', amount: '', total: 0, diff: 0, winner: false },
         ];
         calculate();
     }
 
     function calculate() {
-        // svelte-ignore non_reactive_update
         let minValue = maxNumber;
 
         calculatedItems.forEach((value, key, map) => {
@@ -103,7 +102,7 @@
             map[key].winner = false;
 
             if (total !== 0 && total < minValue) {
-                // @ts-ignore
+                // @ts-expect-error type narrowing
                 minValue = total;
             }
         });

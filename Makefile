@@ -1,6 +1,13 @@
 .PHONY: init
-init:
-	@bun install
+init: install
+
+# Единая команда для ии-агента
+.PHONY: check
+check: format lint
+
+.PHONY: install
+install:
+	@bun install --ignore-scripts
 
 .PHONY: update
 update:
@@ -12,11 +19,17 @@ outdated:
 
 .PHONY: audit
 audit:
+	@bunx cve-lite-cli ./
 	@bun audit
+
+.PHONY: format
+format:
+	@bun run format
 
 .PHONY: lint
 lint:
-	@bunx eslint .
+	@bun run lint
+	@bun run check
 
 .PHONY: run
 run:

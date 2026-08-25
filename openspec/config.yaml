@@ -1,9 +1,9 @@
 schema: spec-driven
 
 context: |
-  Language: Russian (ru-RU)
-  All artifacts must be written in Russian (ru-RU).
-  Keep OpenSpec structural headings and SHALL/MUST keywords in English.
+    Language: Russian (ru-RU)
+    All artifacts must be written in Russian (ru-RU).
+    Keep OpenSpec structural headings and SHALL/MUST keywords in English.
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.

@@ -9,7 +9,7 @@ const precision = 2;
  */
 export const bindMoneyFormat = (node) => {
     function onFocus() {
-        node.value = moneyFormat(node.value).replace(/ /g, '');
+        node.value = moneyFormat(node.value).replace(/ /gu, '');
     }
 
     function onBlur() {
@@ -35,7 +35,7 @@ export const bindMoneyFormat = (node) => {
  * @returns {string}
  */
 export const moneyFormat = (value) => {
-    const re = /(\d)(?=(\d\d\d)+([^\d]|$))/g;
+    const re = /(\d)(?=(\d\d\d)+([^\d]|$))/gu;
     const num = cleanNumber(value);
 
     // Форматируем с фиксированным количеством знаков после запятой
@@ -51,20 +51,22 @@ export const moneyFormat = (value) => {
  * @param {number|string} value
  */
 export const cleanNumber = (value) => {
-    if (!value) {
-        value = 0;
+    let result = value;
+
+    if (!result) {
+        result = 0;
     }
 
-    if (typeof value !== 'number') {
-        value = value.replace(/ /g, '');
-        value = value.replace(/,/g, '.');
+    if (typeof result !== 'number') {
+        result = result.replace(/ /gu, '');
+        result = result.replace(/,/gu, '.');
 
-        value = parseFloat(value);
+        result = parseFloat(result);
 
-        if (isNaN(value)) {
-            value = 0;
+        if (isNaN(result)) {
+            result = 0;
         }
     }
 
-    return Number(value);
+    return Number(result);
 };
