@@ -1,18 +1,18 @@
-const precision = 2;
+const precision: number = 2;
+
+interface MoneyFormatSvelteAction {
+    destroy: () => void;
+}
 
 /**
  * Привязка форматтера к полям ввода
- *
- * @param {HTMLInputElement} node
- *
- * @returns {{ destroy: () => void }}
  */
-export const bindMoneyFormat = (node) => {
-    function onFocus() {
+export const bindMoneyFormat = (node: HTMLInputElement): MoneyFormatSvelteAction => {
+    function onFocus(): void {
         node.value = moneyFormat(node.value).replace(/ /gu, '');
     }
 
-    function onBlur() {
+    function onBlur(): void {
         node.value = moneyFormat(node.value);
     }
 
@@ -29,17 +29,13 @@ export const bindMoneyFormat = (node) => {
 
 /**
  * Получить человеко-читаемое значение
- *
- * @param {number|string} value
- *
- * @returns {string}
  */
-export const moneyFormat = (value) => {
-    const re = /(\d)(?=(\d\d\d)+([^\d]|$))/gu;
-    const num = cleanNumber(value);
+export const moneyFormat = (value: number | string): string => {
+    const re: RegExp = /(\d)(?=(\d\d\d)+([^\d]|$))/gu;
+    const num: number = cleanNumber(value);
 
     // Форматируем с фиксированным количеством знаков после запятой
-    const formatted = num.toFixed(precision);
+    const formatted: string = num.toFixed(precision);
 
     // Добавляем пробелы для разделения тысяч
     return formatted.replace(re, '$1 ');
@@ -47,11 +43,9 @@ export const moneyFormat = (value) => {
 
 /**
  * Получим очищенное число
- *
- * @param {number|string} value
  */
-export const cleanNumber = (value) => {
-    let result = value;
+export const cleanNumber = (value: number | string): number => {
+    let result: number | string = value;
 
     if (!result) {
         result = 0;

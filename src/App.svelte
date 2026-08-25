@@ -1,65 +1,62 @@
-<script>
+<script lang="ts">
     import './app.css';
     import Fa from 'svelte-fa';
     import { faTrash, faPlus, faEraser, faPlay, fa1 } from '@fortawesome/free-solid-svg-icons';
     import { onMount } from 'svelte';
     import { moneyFormat, cleanNumber } from './service/MoneyHelper';
 
-    /**
-     * @typedef {Object} Unit
-     *
-     * @property {string} full
-     * @property {string} small
-     * @property {number} ratio
-     */
+    interface Unit {
+        full: string;
+        small: string;
+        ratio: number;
+    }
 
-    const /** @type {Object<string, Unit>} */ units = {
-            кг: {
-                full: 'кг',
-                small: 'г',
-                ratio: 1000,
-            },
-            л: {
-                full: 'л',
-                small: 'мл',
-                ratio: 1000,
-            },
-            ед: {
-                full: 'ед',
-                small: 'ед',
-                ratio: 1,
-            },
-        };
+    const units: Record<string, Unit> = {
+        кг: {
+            full: 'кг',
+            small: 'г',
+            ratio: 1000,
+        },
+        л: {
+            full: 'л',
+            small: 'мл',
+            ratio: 1000,
+        },
+        ед: {
+            full: 'ед',
+            small: 'ед',
+            ratio: 1,
+        },
+    };
 
-    let /** @type {Unit} */ selectedUnit = $state(units['кг']);
+    let selectedUnit: Unit = $state(units['кг']);
 
-    const maxNumber = 2147483647;
+    const maxNumber: number = 2147483647;
 
-    /**
-     * @typedef {Object} CalculatedItem
-     *
-     * @property {string} price
-     * @property {string} amount
-     * @property {number} total
-     * @property {number} diff
-     * @property {boolean} winner
-     */
+    interface CalculatedItem {
+        price: string;
+        amount: string;
+        total: number;
+        diff: number;
+        winner: boolean;
+    }
 
-    let /** @type {Array<CalculatedItem>} */ calculatedItems = $state([
-            { price: '', amount: '', total: 0, diff: 0, winner: false },
-            { price: '', amount: '', total: 0, diff: 0, winner: false },
-        ]);
+    let calculatedItems: CalculatedItem[] = $state([
+        { price: '', amount: '', total: 0, diff: 0, winner: false },
+        { price: '', amount: '', total: 0, diff: 0, winner: false },
+    ]);
 
     onMount(() => {
         calculate();
     });
 
-    function handleUnitChange(e) {
-        selectedUnit = units[e.target.value];
+    function handleUnitChange(e: Event): void {
+        const target = e.target as HTMLSelectElement;
+        selectedUnit = units[target.value];
         calculate();
     }
 
-    function handleAddItem() {
+    function handleAddItem(): void {
         calculatedItems.push({
             price: '',
             amount: '',
@@ -69,14 +66,14 @@
         });
     }
 
-    function handleDeleteItem(idx) {
+    function handleDeleteItem(idx: number): void {
         if (idx > 1) {
             calculatedItems.splice(idx, 1);
             calculate();
         }
     }
 
-    function handleClear() {
+    function handleClear(): void {
         calculatedItems = [
             { price: '', amount: '', total: 0, diff: 0, winner: false },
             { price: '', amount: '', total: 0, diff: 0, winner: false },
@@ -84,14 +81,14 @@
         calculate();
     }
 
-    function calculate() {
-        let minValue = maxNumber;
+    function calculate(): void {
+        let minValue: number = maxNumber;
 
-        calculatedItems.forEach((value, key, map) => {
-            const price = cleanNumber(value.price);
-            const amount = cleanNumber(value.amount);
+        calculatedItems.forEach((value: CalculatedItem, key: number, map: CalculatedItem[]) => {
+            const price: number = cleanNumber(value.price);
+            const amount: number = cleanNumber(value.amount);
 
-            let total = 0;
+            let total: number = 0;
             if (price > 0 && amount > 0) {
                 total = (selectedUnit.ratio / amount) * price;
                 total = parseFloat(total.toFixed(2));
@@ -102,12 +99,11 @@
             map[key].winner = false;
 
             if (total !== 0 && total < minValue) {
-                // @ts-expect-error type narrowing
                 minValue = total;
             }
         });
 
-        calculatedItems.forEach((value, key, map) => {
+        calculatedItems.forEach((value: CalculatedItem, key: number, map: CalculatedItem[]) => {
             if (value.total === minValue) {
                 map[key].diff = 0;
                 map[key].winner = true;
